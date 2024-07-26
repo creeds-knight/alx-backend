@@ -23,7 +23,7 @@ class FIFOCache(BaseCaching):
             Adds items to the cache
         """
         if key and item:
-            if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
+            if len(self.cache_data) > BaseCaching.MAX_ITEMS:
                 first_key, _ = self.cache_data.popitem(last=False)
                 print(f"DISCARD: {first_key}")
 
