@@ -19,6 +19,13 @@ const displaySchoolValue = async (schoolName) => {
 console.log(await promisify(client.GET).bind(client)(schoolName));
 };
 
-await displaySchoolValue('Holberton');
-setNewSchool('HolbertonSanFrancisco', '100');
-await displaySchoolValue('HolbertonSanFrancisco');
+async function main() {
+  await displaySchoolValue('Holberton');
+  setNewSchool('HolbertonSanFrancisco', '100');
+  await displaySchoolValue('HolbertonSanFrancisco');
+}
+
+client.on('connect', async () => {
+  console.log('Redis client connected to the server');
+  await main();
+});
